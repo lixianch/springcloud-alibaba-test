@@ -1,0 +1,15 @@
+#server:
+#  port: 8020
+#spring:
+#  application:
+#    name: spring-cloud-ali-shopcart
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 192.168.139.129:8848
+#        username: nacos
+#        password: nacos
+#        register-enabled: false
+#dynamic:
+#  config:
+#    user-name: lixianch

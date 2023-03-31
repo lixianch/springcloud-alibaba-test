@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: spring-cloud-ali-shopcart-config-a
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.139.129:8848
+        username: nacos
+        password: nacos
+        file-extension: yml
