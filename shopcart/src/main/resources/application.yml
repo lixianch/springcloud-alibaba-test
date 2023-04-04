@@ -10,6 +10,10 @@
 #        username: nacos
 #        password: nacos
 #        register-enabled: false
+#    sentinel:
+#      transport:
+#        port: 8719
+#        dashboard: 192.168.139.129:8858
 #dynamic:
 #  config:
-#    user-name: lixianch
+#    user-name: lixianch11

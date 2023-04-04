@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-cloud-ali-goods-config-a
+    name: spring-cloud-ali-goods-config-b
   cloud:
     nacos:
       config:

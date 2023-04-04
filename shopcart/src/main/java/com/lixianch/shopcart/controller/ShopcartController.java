@@ -1,6 +1,7 @@
 package com.lixianch.shopcart.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.lixianch.common.vo.ShopcartItemVO;
 import com.lixianch.shopcart.config.DynamicPropertiesConfig;
 import com.lixianch.shopcart.domain.ShopcartItemDO;
@@ -24,6 +25,7 @@ public class ShopcartController {
     private DynamicPropertiesConfig dynamicPropertiesConfig;
 
     @PutMapping("/{goodsCode}/{num}")
+    @SentinelResource("shopcartAddItem")
     public ShopcartItemVO addItem(@PathVariable String goodsCode, @PathVariable Long num){
         ShopcartItemDO itemDO = shopcartService.addItem(goodsCode, num);
         ShopcartItemVO itemVO = BeanUtil.copyProperties(itemDO, ShopcartItemVO.class);

@@ -12,7 +12,7 @@ public class GoodsService {
         GoodsDO goodsDO = new GoodsDO();
         goodsDO.setId(1000L);
         goodsDO.setGoodsCode("1000");
-        goodsDO.setGoodsName("测试商品1");
+        goodsDO.setGoodsName("测试商品2");
         goodsDO.setPrice(100L);
 
         return goodsDO;
