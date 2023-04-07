@@ -17,3 +17,6 @@
 #dynamic:
 #  config:
 #    user-name: lixianch11
+#feign:
+#  sentinel:
+#    enabled: true

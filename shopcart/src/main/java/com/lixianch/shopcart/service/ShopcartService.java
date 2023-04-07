@@ -3,6 +3,7 @@ package com.lixianch.shopcart.service;
 import com.lixianch.common.MessageException;
 import com.lixianch.common.vo.GoodsVO;
 import com.lixianch.shopcart.domain.ShopcartItemDO;
+import com.lixianch.shopcart.rpc.GoodsRpcService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -24,15 +25,18 @@ public class ShopcartService {
     private RestTemplate restTemplate;
     @Autowired
     private LoadBalancerClient loadBalancerClient;
+    @Autowired
+    private GoodsRpcService goodsRpcService;
 
     public ShopcartItemDO addItem(String goodsCode, Long num){
-        ServiceInstance serviceInstance = loadBalancerClient.choose("spring-cloud-ali-goods");
-        log.info(String.format("host=%s, port=%s", serviceInstance.getHost(), serviceInstance.getPort()));
-        ResponseEntity<GoodsVO> entity = restTemplate.getForEntity(String.format("http://%s:%s/goods/%s", serviceInstance.getHost(), serviceInstance.getPort(), goodsCode), GoodsVO.class);
-        if(entity.getStatusCode() != HttpStatus.OK){
-            throw new MessageException("未找到对应商品");
-        }
-        GoodsVO goodsVO = entity.getBody();
+//        ServiceInstance serviceInstance = loadBalancerClient.choose("spring-cloud-ali-goods");
+//        log.info(String.format("host=%s, port=%s", serviceInstance.getHost(), serviceInstance.getPort()));
+//        ResponseEntity<GoodsVO> entity = restTemplate.getForEntity(String.format("http://%s:%s/goods/%s", serviceInstance.getHost(), serviceInstance.getPort(), goodsCode), GoodsVO.class);
+//        if(entity.getStatusCode() != HttpStatus.OK){
+//            throw new MessageException("未找到对应商品");
+//        }
+//        GoodsVO goodsVO = entity.getBody();
+        GoodsVO goodsVO = goodsRpcService.queryGoods(goodsCode);
         ShopcartItemDO itemDO = new ShopcartItemDO();
         itemDO.setGoodsCode(goodsVO.getGoodsCode());
         itemDO.setGoodsName(goodsVO.getGoodsName());
